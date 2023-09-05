@@ -1,0 +1,277 @@
+@mixin centerDev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaflet-popup-content-wrapper {
+    width: 250px !important;
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+    z-index: -2;
+
+}
+.leaflet-popup-tip{
+    background-color:rgb(255, 115, 0)  ;
+}
+.popupContainer{
+    height: 100%;
+    @include centerDev();
+    p{
+        color: white;
+        font-size: 20px;
+    }
+}
+
+.image-continaer {
+    width: 100%;
+    aspect-ratio: 4/3;
+    position: absolute;
+    top: 0;
+
+    img {
+        width: 280px;
+        aspect-ratio: 4/3;
+        position: absolute;
+        right: 0;
+        right: 0;
+        margin: auto;
+        top: 0;
+        z-index: -1;
+    }
+
+    &::after {
+        content: "";
+        @include centerDev();
+        width: 120%;
+        aspect-ratio: 4/3;
+        background: linear-gradient(to bottom, rgba(0, 0, 0,0) , rgb(255, 115, 0) 80%);
+    }
+}
+.leaflet-popup-content{
+    margin: 0;
+}
+
+.leaflet-container {
+    min-height: 500px;
+    max-height: 700px;
+    width: 100%;
+    border-radius: 16px;
+    z-index: 0;
+}
+
+.leaflet-bottom.leaflet-right {
+    display: none;
+}
+
+.Contianer {
+    width: 100%;
+    min-height: 500px;
+    max-height: 700px;
+    position: relative;
+    @include centerDev();
+    overflow: hidden;
+}
+.ContianerWithLoading{
+    width: 100%;
+    min-height: 500px;
+    max-height: 700px;
+    position: relative;
+    display: flex;
+    justify-content: start;
+    overflow: hidden;
+}
+.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive {
+    color: red;
+}
+.loadingContainer{
+    @include centerDev();
+    width: 60%;
+    border-radius: 8px 0 0 8px;
+    background-color: #363636;
+}
+.slide {
+    width: 40%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    background-color: #454545;
+    right: -40%;
+    color: white;
+    transition: right 500ms ease-in;
+    border-radius: 0 8px 8px 0;
+
+    @media only screen and (max-width: 500px) {
+        right: 50%;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        height: 50%;
+        transition: top 500ms ease-in;
+        border-radius: none;
+    }
+
+    span {
+        @include centerDev();
+        position: absolute;
+        bottom: 50%;
+        left: -6%;
+        width: 50px;
+        height: 50px;
+        background-color: #454545;
+        clip-path: circle();
+        text-align: center;
+        font-size: 30px;
+        cursor: pointer;
+
+
+        @media only screen and (max-width: 500px) {
+            right: auto;
+            left: 40%;
+            bottom: 90%;
+            font-size: 25px;
+            transform: rotate(90deg);
+            background-color: #363636;
+
+        }
+    }
+}
+
+.slideOpen {
+    right: 0;
+    transition: right 500ms ease-in;
+
+    @media only screen and (max-width: 500px) {
+        top: 50%;
+        transition: top 500ms ease-in;
+    }
+}
+
+.searchBox {
+    @include centerDev();
+    height: 5%;
+    width: 100%;
+    border-radius: 0 8px 0 0;
+    gap: 20px;
+    padding: 10px 0;
+    background-color: #363636;
+
+    @media only screen and (max-width: 500px) {
+        padding: 25px 0 15px 0;
+        border-radius: none;
+    }
+
+    input {
+        width: 70%;
+        border: none;
+        background-color: transparent;
+        direction: rtl;
+        height: 80%;
+        font-size: 1rem;
+        color: white;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        padding: 0;
+        background-color: #454545;
+        width: 70px;
+        height: 35px;
+        justify-self: start;
+        font-size: 0.8rem;
+        border: none;
+        @include centerDev();
+        color: white;
+
+        &:focus {
+            outline: none;
+            border: 1px solid white;
+        }
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.filterBox {
+    margin: 5px 0;
+    width: 100%;
+    height: 0px;
+    padding: 0;
+    border: none;
+    @include centerDev();
+    gap: 0.3rem;
+    overflow: hidden;
+    transition: height 300ms ease;
+
+    button {
+        width: 70px;
+        aspect-ratio: 4/1;
+        @include centerDev();
+        background-color: #363636;
+        color: white;
+
+        &:hover {
+            border: 1px solid white;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.activeButton{
+    background-color: white !important;
+    color: #363636 !important;
+}
+
+.height-10 {
+    height: 10%;
+    transition: height 500ms ease;
+    
+    @media only screen and (max-width: 500px) {
+        height: 15%;
+        transition: height 500ms ease;
+    }
+}
+
+.resultBox {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 80%;
+
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 0.3rem;
+    gap: 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    background-color: #363636;
+    cursor: pointer;
+
+    &:hover {
+        border: 1px solid white;
+    }
+
+    img {
+        height: 90%;
+        width: 30%;
+    }
+}
