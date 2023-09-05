@@ -6,6 +6,7 @@ export const FiltersList = createContext()
 export const inputData = createContext()
 export const slideClickedData = createContext()
 export const filteredCloneData = createContext()
+export const secondFilteredCloneData = createContext()
 import image from "../assets/First-image.jpg"
 
 
@@ -29,6 +30,7 @@ export const MyContext = (props) => {
         { id: 4, name: "سینما بهمن", hasFoodCourt: true, hasParking: false, hasElevator: true, address: [35.650998, 51.467089], picture: image },
     ])
     const [filteredData, setFilteredData] = useState(Marks)
+    const [secondFilteredData, setSecondFilteredData] = useState(filteredData)
     return (
         <PositionsData.Provider value={[position, setPosition]}>
             <Marksdata.Provider value={[Marks, setMarks]}>
@@ -37,7 +39,9 @@ export const MyContext = (props) => {
                         <inputData.Provider value={[inputValue, setinputValue]}>
                             <slideClickedData.Provider value={[slideClicked, setSlideClicked]}>
                                 <filteredCloneData.Provider value={[filteredData, setFilteredData]}>
-                                {props.children}
+                                    <secondFilteredCloneData.Provider value={[secondFilteredData, setSecondFilteredData]}>
+                                        {props.children}
+                                    </secondFilteredCloneData.Provider>
                                 </filteredCloneData.Provider>
                             </slideClickedData.Provider>
                         </inputData.Provider>

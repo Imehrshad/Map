@@ -1,25 +1,24 @@
 import React, { useContext, useEffect } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import "./Styles.scss";
-import { FilterButton, Marksdata, filteredCloneData, inputData } from '../Context/MyContext';
+import { FilterButton, Marksdata, filteredCloneData, inputData, secondFilteredCloneData } from '../Context/MyContext';
 
 export const Search = () => {
     const [inputValue, setinputValue] = useContext(inputData);
     const [filterBox, setFilterBox] = useContext(FilterButton);
     const [filteredData, setFilteredData] = useContext(filteredCloneData);
-    const [Marks, setMarks] = useContext(Marksdata)
-
+    const [secondFilteredData, setSecondFilteredData] = useContext(secondFilteredCloneData)
     const searchHandler = (e) => {
         const value = e.target.value;
         setinputValue(value);
 
     };
     useEffect(() => {
-        let filteredItems = Marks.filter((item) => {
+        let filteredItems = filteredData.filter((item) => {
             return item.name.toLowerCase().trim().includes(inputValue.toLowerCase().trim());
         });
-        setFilteredData(filteredItems);
-    }, [inputValue, Marks])
+        setSecondFilteredData(filteredItems);
+    }, [inputValue, filteredData])
 
 
     return (

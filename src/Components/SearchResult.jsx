@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { FiltersList, Marksdata, PositionsData, filteredCloneData } from '../Context/MyContext'
+import { FiltersList, Marksdata, PositionsData, filteredCloneData, secondFilteredCloneData } from '../Context/MyContext'
 import "./Styles.scss"
 
 export const SearchResult = () => {
     const [Marks, setMarks] = useContext(Marksdata)
-    const [filteredData, setFilteredData] = useContext(filteredCloneData)
+    const [secondFilteredData, setSecondFilteredData] = useContext(secondFilteredCloneData)
     const [position, setPosition] = useContext(PositionsData)
     const [FiltersStatus, setFiltersStatus] = useContext(FiltersList)
     const newPositionHandler = (item) => {
@@ -15,7 +15,7 @@ export const SearchResult = () => {
     return (
         <div className='resultBox'>
             {
-                filteredData.map((item) => {
+                secondFilteredData.map((item) => {
                     return <a className='results' key={item.id} onClick={() => newPositionHandler(item)}>
                         <img src={item.picture} alt={item.name} />
                         <p>{item.name}</p>
